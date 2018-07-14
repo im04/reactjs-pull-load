@@ -1,6 +1,6 @@
 {
     "name": "reactjs-pull-load",
-    "version": "1.0.4",
+    "version": "1.0.5",
     "description": "React compopnent pull down refresh and pull up load more",
     "main": "./dist/index.js",
     "author": "im04",
