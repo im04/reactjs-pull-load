@@ -1,6 +1,6 @@
 {
     "name": "reactjs-pull-load",
-    "version": "1.0.7",
+    "version": "1.0.8",
     "description": "下拉刷新，上拉加载，ReactPullLoad",
     "main": "./dist/index.js",
     "author": "im04",
