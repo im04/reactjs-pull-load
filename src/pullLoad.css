@@ -1,0 +1,40 @@
+.full {
+	position: absolute;
+	top: 0;
+	bottom: 0;
+	left: 0;
+	right: 0;
+}
+.container {
+	composes: full;
+	-webkit-overflow-scrolling:touch;
+	overflow-scrolling:touch;
+	overflow-y: auto;
+}
+.body {
+
+}
+.scrollBody {
+
+}
+
+.header {
+	position: absolute;
+	left: 0;
+	right: 0;
+	bottom: 100%;
+	visibility: hidden;
+}
+.header.action {
+	visibility: visible;
+}
+.floor {
+	visibility: hidden;
+}
+.floor.action {
+	visibility: visible;
+}
+.header .default, .floor .default {
+	text-align: center;
+	color: #999;
+}

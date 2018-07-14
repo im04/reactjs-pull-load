@@ -1,2 +1,3 @@
-# reactjs-pull-load
-react上拉刷新下拉加载插件
+﻿see the demo
+yarn install
+yarn dev
