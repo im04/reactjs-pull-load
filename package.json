@@ -1,6 +1,6 @@
 {
     "name": "reactjs-pull-load",
-    "version": "1.0.2",
+    "version": "1.0.3",
     "description": "React compopnent pull down refresh and pull up load more",
     "main": "./dist/index.js",
     "author": "im04",
@@ -63,6 +63,7 @@
         "react-keeper": "^2.1.7",
         "react-router": "^4.2.0",
         "react-router-dom": "^4.2.2",
+        "reactjs-pull-load": "^1.0.3",
         "superagent": "^3.6.0",
         "superagent-promise": "^1.1.0",
         "webpack-node-externals": "^1.7.2"

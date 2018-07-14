@@ -1,6 +1,6 @@
 import React from 'react'
 import ReactDom from 'react-dom';
-import PullLoad, {STATS} from "../dist/index";
+import PullLoad, {STATS} from 'reactjs-pull-load';
 console.log(<PullLoad/>, STATS);
 console.log(root);
 ReactDom.render(<div>
