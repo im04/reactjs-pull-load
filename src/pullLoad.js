@@ -67,12 +67,15 @@ export default class PullLoad extends Component {
     startX = 0;
     startY = 0;
     STATS = STATS.default;
-    onTouchStart = _ => {
+    onTouchStart = ev => {
         let targetEvent = event.changedTouches[0];
         this.startX = targetEvent.clientX;
         this.startY = targetEvent.clientY;
         this.cDiffY = 0;
         this.STATS = STATS.default;
+        ev.preventDefault();
+        ev.stopPropagation();
+        return false;
     };
     actionState() {
         this.actionHanlder({
