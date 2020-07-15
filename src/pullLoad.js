@@ -29,6 +29,7 @@ function removeEvent(obj, type, fn) {
 
 export const STATS = {
   default: "default",
+  refreshStart: "refreshStart",
   refreshCheck: "refreshCheck",
   refreshMeet: "refreshMeet",
   refreshLoading: "refreshLoading",
@@ -98,20 +99,18 @@ export default class PullLoad extends Component {
     if (this.STATS !== STATS.default) return ev.cancelable && ev.preventDefault();
     let targetEvent = event.touches[0];
     this.startY = targetEvent.clientY;
+    this.STATS = STATS.refreshStart;
   };
   onTouchMove = ev => {
     if (
-      this.STATS !== STATS.default &&
+      this.STATS !== STATS.refreshStart &&
       this.STATS !== STATS.refreshCheck &&
       this.STATS !== STATS.refreshMeet
-    )
-      return;
+    ) return;
     let touches = ev.touches;
-    if (touches && touches.length > 1) {
-      return;
-    }
+    if (touches && touches.length > 1) return;
     let scrollTop = this.scrollBody.scrollTop;
-    if (scrollTop > 0) {
+    if (scrollTop !== 0) {
       this.STATS !== STATS.scrolling&&(this.STATS = STATS.scrolling);
       return;
     }
