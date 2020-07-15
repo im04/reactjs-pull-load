@@ -1,40 +1,32 @@
-.full {
-	position: absolute;
-	top: 0;
-	bottom: 0;
-	left: 0;
-	right: 0;
-}
 .container {
-	composes: full;
-	-webkit-overflow-scrolling:touch;
-	overflow-scrolling:touch;
-	overflow-y: auto;
+	width: 100%;
+	height: 100%;
+	position: relative;
+	padding-top: 50px;
+	margin-top: -50px;
+	overflow: hidden;
 }
 .body {
-
+	width: 100%;
+	height: 100%;
+	overflow-y: auto;
 }
-.scrollBody {
-
-}
-
 .header {
 	position: absolute;
 	left: 0;
 	right: 0;
-	bottom: 100%;
+	top:0;
 	visibility: hidden;
 }
 .header.action {
 	visibility: visible;
 }
-.floor {
-	visibility: hidden;
-}
 .floor.action {
 	visibility: visible;
 }
 .header .default, .floor .default {
+	height: 50px;
+	line-height: 50px;
 	text-align: center;
 	color: #999;
 }

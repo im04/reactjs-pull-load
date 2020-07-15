@@ -1,6 +1,6 @@
 import React from 'react'
 import ReactDom from 'react-dom';
-import PullLoad, {STATS} from 'reactjs-pull-load';
+import PullLoad, {STATS} from '../src/pullLoad';
 console.log(<PullLoad/>, STATS);
 console.log(root);
 /*
@@ -15,7 +15,16 @@ export const STATS = {
 };
  */
 class App extends React.Component {
-    list = [0,1];
+    list = [];
+    state = {
+        noMore: false
+    }
+    componentDidMount() {
+        setTimeout(_ => {
+            this.list = [0];
+            this.setState({});
+        }, 600)
+    }
     pushData() {
         return new Promise((resolve, reject) => {
             setTimeout(_ => {
@@ -24,8 +33,11 @@ class App extends React.Component {
         })
     }
     render() {
+        let {
+            noMore
+        } = this.state;
         return (
-            <div>
+            <div style={{width:'100%',height:'100%',overflow:'hidden',position:'absolute',top:0,left:0}}>
                 <PullLoad
                     //header={<div>自定义header</div>} //可以根据不同状态来改变头部
                     //floor={<div>自定义floor</div>}
@@ -33,21 +45,20 @@ class App extends React.Component {
 
                     }}
                     downEnough = {50} //下拉触发加载高度
-                    distanceBottom = {50} //上拉
-                    actionHanlde={({state,next})=>{ //回调 返回各种状态
-                        console.log(state);
+                    distanceBottom = {15} //上拉
+                    actionHandler={({state,next})=>{ //回调 返回各种状态
                         switch (state) {
                             case STATS.default:
                                 return;
-                            case STATS.reset:
+                            case STATS.refreshCheck:
                                 return;
-                            case STATS.resetAction:
+                            case STATS.refreshMeet:
                                 return;
-                            case STATS.loadingReset:
+                            case STATS.refreshLoading:
                                 this.pushData().then(rep => {
-                                    this.list = [0,1];
+                                    this.list = [0];
                                     next && next();
-                                    this.setState({});
+                                    this.setState({noMore:false});
                                 });
                                 return;
                             case STATS.more:
@@ -58,13 +69,13 @@ class App extends React.Component {
                                 this.pushData().then(rep => {
                                     this.list.push(rep);
                                     next && next();
-                                    this.setState({});
+                                    this.setState({noMore:this.list.length > 10});
                                 });
                                 return;
                         }
 
                     }}
-                    hasMore={true} // 是否有更多 为false不触发上拉
+                    noMore={noMore} // 是否有更多 为false不触发上拉
                 >
                     {
                         this.list.map(v => {
